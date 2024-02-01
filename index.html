@@ -85,7 +85,7 @@
         //    highlightLayer = e.target;
         //    highlightLayer.openPopup();
         //}
-
+        // COMIENZA BLOQUE PARA RESALTAR EL POLÍGONO DEL ACUÍFERO    
         var highlightLayer;
 
         function highlightFeature(e) {
@@ -113,13 +113,12 @@
             }
         }
 
-        
+        // TERMINA BLOQUE DE RESALTADO DEL POLÍGONO
 
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        // }).fitBounds([[25.18513454148871,-120.04052384038442],[33.07319543036344,-93.8328893436919]]);
+        //}).fitBounds([[18.18513454148871,-120.04052384038442],[33.07319543036344,-93.8328893436919]]);
         }).fitBounds([[32.405212,-117.062526],[14.403755,-87.113795]]);
-
 
         //extent: [-20037508.342789, -20037508.342789, 20037508.342789, 20037508.342789],
 
@@ -171,6 +170,8 @@
             //    </table>';
             //layer.bindPopup(popupContent, {maxHeight: 400});
         //}
+
+        //SE MUESTRA LA TABLA QUE CONTIENE EL POPUP DE CLAVE Y NOMBRE DEL ACUÍFERO
         var popupContent = '<table>\
             <tr>\
                 <th scope="row"></th>\
@@ -186,20 +187,20 @@
         </table>';
         layer.bindPopup(popupContent, {maxHeight: 400});
         }        
-
+        // TERMINA BLOQUE DEL POPUP
 
         function style_AcuferosSobreexplotados2023_1_0() {
             return {
                 pane: 'pane_AcuferosSobreexplotados2023_1',
                 opacity: 1,
-                color: 'rgba(3,164,251,1.0)',
+                color: 'rgba(3,164,251,1.0)', //COLOR AZUL PARA EL CONTORNO
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
                 weight: 3.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(8,177,250,0.2)',
+                fillColor: 'rgba(8,177,250,0.2)', //OPACIDAD = 0.2 PARA LA CAPA DE ACUÍFEROS
                 interactive: true,
             }
         }
@@ -224,7 +225,7 @@
                 return this._div;
             };
             title.update = function () {
-            //    this._div.innerHTML = '<h2>Acuíferos en Condición de Sobreexplotación,  09/11/2023</h2>';
+            //    this._div.innerHTML = '<h2>Acuíferos en Condición de Sobreexplotación,  09/11/2023</h2>'; COMENTAMOS EL TÍTULO PORQUE NO SE DESPLIEGA ADECUADAMENTE CON EL BOOTSTRP DE gob.mx
             };
             title.addTo(map);
         var baseMaps = {};
@@ -306,7 +307,7 @@
 
         // Termina Widget de Búsqueda
 
-// Reemplazar con el nuevo bloque
+// Inicia Widget de búsqueda
         var searchWidget = new L.Control.Search({
             layer: layer_AcuferosSobreexplotados2023_1,
             initial: false,
@@ -318,18 +319,18 @@
 
                 // Resaltar el polígono encontrado
                 latlng.layer.setStyle({
-                    fillColor: 'purple',
+                    fillColor: 'purple', // Color del polígono encontrado en el widget
                     color: 'purple',
                     weight: 3,
                     opacity: 1,
-                    fillOpacity: 0.1
+                    fillOpacity: 0.1 // Opacidad del relleno=0.1
                 });
 
                 // Abrir el popup
                 latlng.layer.bindPopup(latlng.layer.feature.properties.NOM_ACUI).openPopup();
 
                 // Ajustar el mapa al área del polígono encontrado
-                map.fitBounds(latlng.layer.getBounds());
+                map.fitBounds(latlng.layer.getBounds()); //Acercamiento al polígono encontrado
             }
         });
 
