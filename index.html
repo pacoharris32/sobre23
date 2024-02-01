@@ -9,7 +9,8 @@
         <link rel="stylesheet" href="css/leaflet.css">
         <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
         <link rel="stylesheet" href="css/leaflet-search.css">
-        <link href="https://framework-gb.cdn.gob.mx/gm/v4/image/favicon.ico" rel="shortcut icon">
+        <link href="img/favicon.ico" rel="shortcut icon">
+
         <style>
         html, body, #map {
             width: 100%;
@@ -118,7 +119,8 @@
             zoomControl:true, maxZoom:28, minZoom:1
         }).fitBounds([[18.18513454148871,-120.04052384038442],[33.07319543036344,-93.8328893436919]]);
 
-        // }).fitBounds([[42.18513454148871,-99.04052384038442],[40.07319543036344,-93.8328893436919]]);
+        //extent: [-20037508.342789, -20037508.342789, 20037508.342789, 20037508.342789],
+
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://siga.conagua.gob.mx" target="_blank">CONAGUA|SGT|GAS|SIGA</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
